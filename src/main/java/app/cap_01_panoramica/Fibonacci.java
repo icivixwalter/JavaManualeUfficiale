@@ -1,5 +1,7 @@
 package app.cap_01_panoramica;
 
+import app.cap_02_classi_e_oggetti.esercizi.Esercizio;
+
 public class Fibonacci {
     /**
      * sequenza fibonacci max 50
@@ -8,8 +10,11 @@ public class Fibonacci {
      */
     private static final int MAX = 50;  //COSTANTE DENOMINATA = max valore di fibonacci
     private static final int MAX_INDEX = 9;  //COSTANTE DENOMINATA numero massimo di valori
-
+    @Esercizio(nro="1.3",pag = 6,descrizione = " aggiungere" +
+            "un titolo alla lista stampata per il programma fibonacci ")
     public static void main(String[] args) {
+        //titolo ...
+
         Fibonacci fibonacci = new Fibonacci();
         fibonacci.fibonacci_01();
 

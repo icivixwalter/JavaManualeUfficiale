@@ -6,9 +6,23 @@ import app.cap_01_panoramica.annotazioni.Reviewed;
  * CLASSE POINT pag 12
  */
 @Reviewed(reviewer = "giacomo",date = 20210624)
-public class Point {
+/*pag 115 cap 4 inserito modifica, viene dichiarata Point come classe Comparable e una classe identifica
+i tipi di interfaccia che essa implementa elencandoli in una lista dopo la porola implements.
+Queste interfacce sono dette SUPERINTERFACCE DELLA CLASSE che deve fornire dei metodi definite nelle sue
+superinterfacce oppure in caso contrario la classe deve essere dichiarata abstract e la sua implementazione
+viene eseguita nelle sottoclassi. pag. 115
+
+*
+*/
+public class Point implements Comparable<Point> {
+    //Campo statico della classe = VARIABILI DELLA CLASSE STATICHE
+    //modifiche dal capitolo 04 - Il riferimento all'origine che non cambia mai pag 115
+    private static final Point ORIGIN = new Point();
+
     //punti
     public double x, y; // attenzione i campi MAI PUBBLICI
+
+    Comparable <Point> p1;// nuovo nome introdotto dall'interfaccia pag 116
 
     //2 COSTRUTTORI
     //---------------------------------------------------------------------------------//
@@ -22,8 +36,7 @@ public class Point {
     //---------------------------------------------------------------------------------//
 
 
-    //Campo statico della classe = VARIABILI DELLA CLASSE STATICHE
-    public static Point origin = new Point();
+
 
     public void clear() {
         System.out.println("metodo Clear della Classe Point");
@@ -36,11 +49,25 @@ public class Point {
      * Parametro = un oggetto classe Point
      * calcolo della radice quadrata della somma dei quadrati tra
      * le rispettive coordinate di x dei due punti e le rispettive coordinate di y
+     * modificato da double distance(Point that) ... in  Point p
      */
-    public double distance(Point that) {
-        double xdiff = x - that.x;
-        double ydiff = y - that.y;
+    public double distance(Point p) {
+        double xdiff = x - p.x;
+        double ydiff = y - p.y;
         return Math.sqrt(xdiff * xdiff + ydiff * ydiff);
+    }
+
+    //modifica inserita dal cap. 4 pag 115
+    public int compareTo (Point p){
+    double pDist=  p.distance(ORIGIN);
+    double dist=  this.distance(ORIGIN);
+    if (dist > pDist)
+        return 1;
+        else if (dist==pDist)
+            return 0;
+        else
+            return -1;
+
     }
 
 
