@@ -9,5 +9,5 @@ public @interface Esercizio {
     public String nro();
     public int pag() default 0;
     public String descrizione() default "";
-
+    public boolean daFare() default false;
 }
