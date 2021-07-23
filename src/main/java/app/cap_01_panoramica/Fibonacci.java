@@ -48,6 +48,24 @@ public class Fibonacci {
                 "\n3) ho stampato l'intero contenuto dell'array alla fine (non durante il ciclo).");
         System.out.println("----------------------------------------------------------------");
         fibonacci.fibonacciArrayDiClassi();
+
+
+        System.out.println("\n\n");
+        System.out.println("FIBONACCI VERSIONE 6. STRINGHE inserite in un array. " +
+                "\n1) ho creato un array che contiene MAX_INDEX di String" +
+                "\n2) ho copiato l'output di ogni iterazione del ciclo for nell'array;" +
+                "\n3) ho stampato l'intero contenuto dell'array alla fine (non durante il ciclo).");
+        System.out.println("----------------------------------------------------------------");
+        fibonacci.fibonacciArrayString();
+
+
+
+        System.out.println("\n\n");
+        System.out.println("FIBONACCI VERSIONE 7. stampo con il metodo printf ");
+        System.out.println("----------------------------------------------------------------");
+
+        fibonacci.fibonacciPrintf();
+
     }
 
     public void fibonacci_01() {
@@ -138,7 +156,8 @@ public class Fibonacci {
     /**
      * CICLO CHE SEGNA I NUMERI PARI DI FIBONACCI CON *
      */
-    @Esercizio(nro = "1.10", pag = 20, descrizione = "  Modificare l'algoritmo per fargli memorizzare in una array" +
+    @Esercizio(nro = "1.10", pag = 20, descrizione = "  Modificare l'algoritmo per fargli memorizzare " +
+            "in una array" +
             "la sequenza prodotta e mostrare solo alla fine la sequenza dei valori - UNICA STAMPA " +
             "+ creare una Classe con 2 campi 1) valore fibonacci 2) il bool per dire se pari o meno." +
             "Inoltre l'array deve utilizzare questa classe.")
@@ -147,13 +166,14 @@ public class Fibonacci {
         FibonacciValue[] risultatiClassi = new FibonacciValue[MAX_INDEX];
         long lo = 1;
         long hi = 1;
-        //inizializzo il PRIMO ELEMENTO DELL'ARRYA con LA CLASSE fibonacciValue
+        //inizializzo il PRIMO ELEMENTO DELL'ARRAYA con LA CLASSE fibonacciValue
         risultatiClassi[0] = new FibonacciValue(lo, false);
 
         //CICLO FOR che istanza le rimanenti finbonacciValue dell'array
         //inserendo i due valori
         for (int i = 2; i <= MAX_INDEX; i++) {
-            /*in questo ciclo istanzio gli altri elementi dell'array
+            /*  RIEMPIE L'ARRAY
+                in questo ciclo istanzio gli altri elementi dell'array
              * utilizzo l'operatore == per passare al costruttore un boolean:
              *   Se il numero è PARI ALLORA hi%2 da come risultato 0;
              *   altrimenti da 1 e quindi è dispari
@@ -188,4 +208,79 @@ public class Fibonacci {
     }
 
 
+    /**
+     * CICLO FOR ARRAY STRING *
+     * PAG 22 CAPITOLO 1
+     */
+    @Esercizio(nro = "1.12", pag = 22, descrizione = "Modificare fibonacci per " +
+            "memorizzare oggetti String che esso crea, all'interno di un array invece" +
+            "di invocare direttamente il metodo println su di essi")
+    public void fibonacciArrayString() {
+        String[] variabileArrayString;
+        long lo = 1;
+        long hi = 1;
+
+
+        //todo: continuare l'esercizio.
+        //ho inizializzato la variabile array con nun nuovo oggetto String Array con
+        //elementi massimi di MAX_INDEX = 9, attenzione tutti e 9 sono vuoti.
+        variabileArrayString = new String[MAX_INDEX];
+
+        //SEQUENZA CON IL CICLO FOR pag. 10
+        String mark_s;
+        for (int i = 2; i <= MAX_INDEX; i++) {
+            if (hi % 2 == 0) {
+                mark_s = " *";
+            } else {
+                mark_s = "";
+            }
+
+            //caricato l'array. i-2 perche altrimenti parto da 2 al posto di zero.
+            variabileArrayString[i - 2] = i + ": " + hi + mark_s;  //valore caricato
+
+            hi = lo + hi; //il nuovo hi
+            lo = hi - lo; //la somma  - il vecchio lo
+            //che in precedenza era il vecchio hi
+        }
+        /*
+        Arrays.toString = stampo l'arrary senza costruire un ciclo di stampa;
+        stamperebbe una cosa del genere: [Ljava.lang.String;@1b28cdfa
+        perchè gli array estendono Object e l'array non ha un metodo toString e quindi
+        utilizza quello di Object
+         */
+        System.out.println(Arrays.toString(variabileArrayString));
+        System.out.println("");
+        System.out.println("ATTENZIONE Senza arrays.toString TI STAMPA COSI = " + variabileArrayString); // stamperebbe una cosa del genere: [Ljava.lang.String;@1b28cdfa
+
+    }
+
+    /**
+     * Uso di printf. CICLO CHE SEGNA I NUMERI PARI DI FIBONACCI CON *
+     */
+    @Esercizio(nro = "1.13", pag = 24, descrizione = "Modificare fibonacci per " +
+            "utilizzare printf al posto di println.")
+    public void fibonacciPrintf() {
+        long lo = 1;
+        long hi = 1;
+
+        //SEQUENZA CON IL CICLO FOR pag. 10
+        String mark_s;
+
+        for (int i = 2; i <= MAX_INDEX; i++) {
+            if (hi % 2 == 0) {
+                mark_s = " *";
+            } else {
+                mark_s = "";
+            }
+
+            /*
+            ESERCIZIO 1.12 =  utilizzare ?
+             */
+            System.out.printf("%d %s %d %s \n",i, ": ", hi,mark_s);
+
+            hi = lo + hi; //il nuovo hi
+            lo = hi - lo; //la somma  - il vecchio lo
+            //che in precedenza era il vecchio hi
+        }
+    }
 }

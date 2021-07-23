@@ -1,16 +1,18 @@
 package app.cap_01_panoramica.interfacce;
 
+import java.util.Arrays;
+
 /**
  * CLASSE CHE IMPLEMENTA UN CONTRATTO INTERFACCIA
  * che in questo caso Lookup.
- *
+ * <p>
  * è una struttura dati che contiene nomi e valori, tipo un dizionario su cui è
  * possibile cercare i valori attraverso i nomi.
  */
 class SimpleLookup implements Lookup {
 
-    private String[] names;
-    private Object[] values;
+    protected String[] names;     //array di nomi (chiave)
+    protected Object[] values;    //array di valori
 
     //costruttore di SimpleLookup
     public SimpleLookup(String[] myNames, Object[] myValues) {
@@ -29,6 +31,15 @@ class SimpleLookup implements Lookup {
         return null; // non trovato
     }
 
+    /**
+    QUESTO METODO è stato creato nella superclasse cosi viene ereditato
+     dalla sottoclasse e serve per stampare.
+     */
+    @Override
+    public String toString() {
+        return String.format("names: %s - values: %s", Arrays.toString(names), Arrays.toString(values));
+    }
+
     public static void main(String[] args) {
         //accoppia i due array
         String[] myNames = new String[]{"valter", "giacomo", "luisa"};
@@ -44,5 +55,16 @@ class SimpleLookup implements Lookup {
         Lookup myLookup = new SimpleLookup(myNames, myAges);
 
         ProcessValue.processValues(myNames, myLookup);
+
+        SimpleLookupMigliorata c = new SimpleLookupMigliorata(myNames, myAges);
+
+        System.out.println(c);
+        c.add("Pippo",100);
+        System.out.println(c);
+        c.remove("valter");
+        System.out.println(c);
+        c.remove("walter");
+        System.out.println(c);
+
     }
 }
