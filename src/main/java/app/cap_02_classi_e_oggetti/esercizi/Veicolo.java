@@ -62,15 +62,48 @@ public class Veicolo {
 
     //MAIN
     //campo non statico id deve essere final e viene aumentato ad ogni oggetti veicolo
+    @Esercizio(nro="2.5",pag = 48,descrizione = "Scrivere un metodo main per la classe Vehicle" +
+            "che crei un certo numero di oggetti Vehicle e visualizzi il valore dei loro campi.")
     public static void main(String[] args) {
         System.out.println(Veicolo.idSuccessivo);
         Veicolo auto= new Veicolo();
         System.out.println(auto.id);
         System.out.println(Veicolo.idSuccessivo);
 
+
         Veicolo auto2= new Veicolo();
         System.out.println(auto2.id);
 
+        /*
+        ASSEGNAZIONE CAMPI prima di stampare altrimenti hanno valore zero
+         Puoi fare così anche se sono private solo perché sei nella stessa classe.
+         Nelle altre, devi creare dei getter e setter public.
+        */
+
+        auto.velocita =20 ;
+        auto.direzione =70 ;
+        auto.proprietario ="walter" ;
+
+
+        auto2.velocita =20 ;
+        auto2.direzione =90 ;
+        auto2.proprietario ="giacomo" ;
+
+
+        //stampo i campi di Auto 1 e 2 per l'esercizio 2.5
+        System.out.println("\nEsercizio 2.5 = Stampo i campi dei veicoli:");
+        System.out.println("-------------------------------------------------------------------------");
+        System.out.println("AUTO 1");
+        System.out.println("velocita "+ auto.velocita);
+        System.out.println("direzione "+ auto.direzione);
+        System.out.println("proprietario: "+ auto.proprietario);
+
+
+        System.out.println("\nAUTO 2");
+        System.out.println("velocita "+ auto2.velocita);
+        System.out.println("direzione "+ auto2.direzione);
+        System.out.println("proprietario: "+ auto2.proprietario);
+        System.out.println("-------------------------------------------------------------------------");
     }
 
 }

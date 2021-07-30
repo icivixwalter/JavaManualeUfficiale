@@ -26,7 +26,7 @@ public class Body {
     //VARI COSTRUTTORI
     //------------------------------------------------------------------------------------------------//
     //costruttore SENZA ARGOMENTI = no-arg
-    Body() {
+    public Body() {
         //il costruttore assegna un idNum valido all'oggetto appena creato
         // idNum = nextID++;  non serve perchè nel blocco di inizializzazione, vedi sopra.
     }
@@ -45,12 +45,14 @@ public class Body {
         this.orbits = other.orbits;
     }
     //costruttore con 2 ARGOMENTI
-    Body(String bodyName, Body orbitsAround) {
+    public Body(String bodyName, Body orbitsAround) {
         //this () chiama il costruttore senza argomenti
         // this(); adesso è inutile perchè IdNum si aggiorna nel blocco di inizializzazione
         this.name = bodyName;
         this.orbits = orbitsAround;
     }
+
+
 
 
     //VARI COSTRUTTORI *** FINE *
