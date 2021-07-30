@@ -12,11 +12,7 @@ public class Veicolo {
 
     @Esercizio(nro = "2.3", pag = 44)
     private static int idSuccessivo = 0; //ottiene il prossimo veicolo
-    /**/
-    //todo: metodo toString da errore ??
 
-
-    //todo: esercizio da fare ???
     /*
     ad ogni istanza new di veicolo il campo statico idSuccessivo viene incrementato E ASSEGNATO A ID
     ++X = INCREMENTA E ASSEGNA
@@ -26,10 +22,24 @@ public class Veicolo {
     @Esercizio(nro = "2.4", pag = 44)
     private final int id = ++idSuccessivo;                 // campo idenfica this
 
+
+    //---------------------------------------------------------------------------------------------//
+    //costruttore 01 = senza argomenti
+    @Esercizio(nro = "2.7.1", pag = 52, descrizione = "Aggiungere 2 costruttori e modificare il main.")
+    public Veicolo() {
+    }
+
+    //costruttore 02 = 1 argomento Stringa proprietario
+    @Esercizio(nro = "2.7.2", pag = 52, descrizione = "Aggiungere 2 costruttori e modificare il main.")
+    public Veicolo(String proprietario) {
+        this.proprietario = proprietario;
+    }
+    //attenzione 03 = VIENE MODIFICATO IL MAIN per usare il II costruttore.
+    //---------------------------------------------------------------------------------------------//
+
     @Esercizio(nro = "2.10", pag = 57)
     public String toString() {
-
-        return "veicolo";
+        return "veicolo " + id;
     }
 
     @Esercizio(nro = "2.13.01", pag = 65) // metodi di acceso ai campi che sono resi privati
@@ -66,7 +76,12 @@ public class Veicolo {
             "che crei un certo numero di oggetti Vehicle e visualizzi il valore dei loro campi.")
     public static void main(String[] args) {
         System.out.println(Veicolo.idSuccessivo);
-        Veicolo auto= new Veicolo();
+
+        // Esercizio 2.7 = come sopra devo modifare il main
+        // attenzione 03 = VIENE MODIFICATO IL MAIN per usare il II costruttore. e per usare
+        // questa modifca cambio da         Veicolo auto= new Veicolo(); --->
+        //        Veicolo auto= new Veicolo("walter");
+        Veicolo auto= new Veicolo("walter (inzializzato dal II costruttore)");
         System.out.println(auto.id);
         System.out.println(Veicolo.idSuccessivo);
 
@@ -82,7 +97,7 @@ public class Veicolo {
 
         auto.velocita =20 ;
         auto.direzione =70 ;
-        auto.proprietario ="walter" ;
+        // auto.proprietario ="walter" ; // inutile dopo l'uso del costruttore che inizializza il primo proprietario
 
 
         auto2.velocita =20 ;
@@ -104,6 +119,10 @@ public class Veicolo {
         System.out.println("direzione "+ auto2.direzione);
         System.out.println("proprietario: "+ auto2.proprietario);
         System.out.println("-------------------------------------------------------------------------");
+
+
     }
+
+
 
 }
