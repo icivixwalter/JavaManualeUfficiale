@@ -6,11 +6,32 @@ package app.cap_04_interfacce;
  * CLASSE CONTENITORE OUTER con innestata la classe Inner
  */
 public class Outer {
-    // I classe innestata Inner
-  class Inner{
+    //inseriti come esempio di adombramento di pag 137
+    void print(){}  //print di Outer senza parametri
+    void print(int val){}
 
-  }
+
+    /**
+* CLASSE INNER creata per il paragrafo 5.2.2. pag 135 a
+*/
+// I classe innestata Inner
+  class Inner{
+        //inseriti come esempio di adombramento di pag 137
+        void print(){}  //questo metodo adobra quello della classe Outer (contenitrice)
+        void show (){}
+
+
+        //COSTRUTTORE DI INNER VUOTO
+            public Inner() {
+                print ();
+                Outer.this.print(); //ADOMBRA tutte le forme di Outer.print pag 137
+               // print(1);   scorretto non esiste Inner.print(int)
+
+            }
+    }
 }
+
+
 //I CLASSE ESTERNA che estende Outer PAG 135
 class ExtendedOuter extends Outer {
     // II CLASSE innestata Inner = il costruttore di Inner richiede un Oggetto di tipo Outer
