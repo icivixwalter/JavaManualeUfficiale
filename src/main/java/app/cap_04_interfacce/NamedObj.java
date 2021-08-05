@@ -16,7 +16,15 @@ public class NamedObj {
         this.name = name;
     }
 
-    //pag 168 = il valore da assegnare è piu complesso di una semplice espressione
+    /* pag 168 = il valore da assegnare è piu complesso di una semplice espressione
+    i campi statici e final vengono inizializzati entro la fine della costruzione di un
+    oggetto e se il complianotre non riesce a verificare tale inizializzazione  segnalera
+    un errore di compilazione. Quihdi anche LE VARIABILI LOCALI FINAL devono essere inizializzate
+    prima del suo uso. E le variabili + parametri FINAL vengono utilizzate solo quando 4
+    si deve accedere ALLA CLASSI INTERNE O ANONIME  oppure per  EVITARE che a queste variabili
+    venga assegnato ACCIDENTALMENTE un valore ad un paramentro che NON SI INDTENDEVA
+    assegnarlo. pag 168
+     */
     static final int[] numbers = numberList();
 
     static final int maxNumber; //massimo valore number
@@ -33,6 +41,8 @@ public class NamedObj {
 
     static int[] numberList()
     {
-        //...... pag 168 ??
+        //...... pag 168 ?? l'automantico ha inserito il return
+        // altrimenti da errore.
+        return new int[0];
     }
 }
